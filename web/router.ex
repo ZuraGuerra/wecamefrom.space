@@ -23,6 +23,7 @@ defmodule FromSpace.Router do
     pipe_through :browser
 
     get "/new", AuthController, :new
+    post "/register", AuthController, :register
   end
 
   # Other scopes may use custom stacks.
