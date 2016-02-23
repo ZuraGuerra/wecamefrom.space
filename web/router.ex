@@ -19,6 +19,12 @@ defmodule FromSpace.Router do
     get "/", PageController, :index
   end
 
+  scope "/admin", FromSpace do
+    pipe_through :browser
+
+    get "/new", AuthController, :new
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", FromSpace do
   #   pipe_through :api

@@ -1,0 +1,15 @@
+<%= form_for @changeset, admin_auth_path(@conn, :register), fn f -> %>
+
+  <label>Name</label>
+  <%= text_input f, :name, required: true %>
+
+  <label>Description</label>
+  <%= textarea f, :description, required: true %>
+
+  <label>Avatar URL</label>
+  <%= text_input f, :avatar, required: true %>
+
+  <label>Password</label>
+  <%= password_input f, :password, required: true %>
+
+<% end %>
