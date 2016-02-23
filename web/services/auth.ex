@@ -17,11 +17,15 @@ defmodule FromSpace.AuthService do
 
   def login(changeset) do
     admin = from admin in Admin,
-    select: *
+    select: admin
     admin = Repo.one(admin)
-    case check_password(changeset.params["password"], admin.password) do
-      true -> {:ok, admin}
-      :else -> :error
+    if !!admin do
+      case check_password(changeset.params["password"], admin.password) do
+        true -> {:ok, admin}
+        false -> :password_mismatch
+      end
+    else
+      :no_admin
     end
   end
 
