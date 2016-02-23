@@ -31,14 +31,14 @@ defmodule FromSpace.AuthController do
   def login(conn, %{"admin" => admin_params}) do
     changeset = cast(%Admin{}, admin_params, ~w(password), ~w())
     case AuthService.login do
-      nil ->
-        conn
-        |> put_flash(:error, "No admins registered")
-        |> redirect(to: "/admin")
-      admin ->
+      {:ok, admin} ->
         conn
         |> put_session(:admin, admin.id)
-        |> redirect(to: "/admin/dashboard")    
+        |> redirect(to: "/admin/dashboard")
+      :else ->
+        conn
+        |> put_flash(:error, "Please try again")
+        |> redirect(to: "/admin")
     end
   end
 end
