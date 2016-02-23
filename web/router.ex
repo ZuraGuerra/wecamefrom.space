@@ -24,6 +24,9 @@ defmodule FromSpace.Router do
 
     get "/new", AuthController, :new
     post "/register", AuthController, :register
+    get "/", AuthController, :auth
+    post "/login", AuthController, :login
+    get "/logout", AuthController, :logout
   end
 
   # Other scopes may use custom stacks.

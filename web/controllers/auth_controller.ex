@@ -22,4 +22,9 @@ defmodule FromSpace.AuthController do
         |> redirect(to: "/new")
     end
   end
+
+  def auth(conn, _params) do
+    changeset = Admin.changeset(%Admin{})
+    render conn, "auth.html", changeset: changeset
+  end
 end
