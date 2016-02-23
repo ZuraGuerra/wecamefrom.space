@@ -1,7 +1,13 @@
 defmodule FromSpace.AuthService do
-  #use FromSpace.Web, :model
+  import Ecto.Changeset, only: [put_change: 3]
 
-  def hash_password(password) do
+  def create_admin(changeset) do
+    changeset
+    |> put_change(:password, hash_password(changeset.params["password"]))
+    |> FromSpace.Repo.insert()
+  end
+
+  defp hash_password(password) do
     Comeonin.Bcrypt.hashpwsalt(password)
   end
 
