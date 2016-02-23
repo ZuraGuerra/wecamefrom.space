@@ -12,4 +12,6 @@
   <label>Password</label>
   <%= password_input f, :password, required: true %>
 
+  <%= submit "Create"%>
+
 <% end %>
