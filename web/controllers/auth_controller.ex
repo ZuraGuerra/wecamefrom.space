@@ -50,4 +50,11 @@ defmodule FromSpace.AuthController do
         |> redirect(to: "/admin")
     end
   end
+
+  def logout(conn, _params) do
+    conn
+    |> delete_session(:admin)
+    |> put_flash(:info, "Logged out")
+    |> redirect(to: "/")
+  end
 end
