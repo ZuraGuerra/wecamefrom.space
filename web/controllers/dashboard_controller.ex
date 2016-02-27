@@ -4,6 +4,11 @@ defmodule FromSpace.DashboardController do
   
   plug FromSpace.Plug.Auth
 
+  def dashboard(conn, _params) do
+    posts = Repo.all(Post)
+    render conn, "index.html", conn: conn, posts: posts
+  end
+
   def editor(conn, %{"post_id" => post_id}) do
     post = Repo.get_by(Post, id: post_id)
     changeset = Post.changeset(post)

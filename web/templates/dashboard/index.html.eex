@@ -1,0 +1,7 @@
+<a href="/admin/posts">Manage your posts</a>
+<br>
+<a href="/admin/editor">Write a post</a>
+<br>
+<a href="/admin/logout">Logout</a>
+
+<%= render FromSpace.PostView, "index.html", conn: @conn, posts: @posts %>

@@ -32,7 +32,7 @@ defmodule FromSpace.Router do
     get "/editor", DashboardController, :editor
     get "/editor/:post_id", DashboardController, :editor
     get "/preview/:post_id", DashboardController, :preview
-    get "/dashboard", DashboardController, :editor
+    get "/dashboard", DashboardController, :dashboard
   end
 
   # Other scopes may use custom stacks.
