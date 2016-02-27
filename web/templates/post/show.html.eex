@@ -1,0 +1,48 @@
+<h2>Show post</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @post.title %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @post.url %>
+  </li>
+
+  <li>
+    <strong>Preview image:</strong>
+    <%= @post.preview_image %>
+  </li>
+
+  <li>
+    <strong>Preview text:</strong>
+    <%= @post.preview_text %>
+  </li>
+
+  <li>
+    <strong>Preview background color:</strong>
+    <%= @post.preview_background_color %>
+  </li>
+
+  <li>
+    <strong>Preview font color:</strong>
+    <%= @post.preview_font_color %>
+  </li>
+
+  <li>
+    <strong>Html:</strong>
+    <%= @post.html %>
+  </li>
+
+  <li>
+    <strong>Published:</strong>
+    <%= @post.published %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: post_path(@conn, :edit, @post) %>
+<%= link "Back", to: post_path(@conn, :index) %>
