@@ -29,6 +29,8 @@ defmodule FromSpace.Router do
     get "/logout", AuthController, :logout
 
     resources "/posts", PostController
+    get "/editor", PageController, :editor
+    get "/editor/:post_id", PageController, :editor
   end
 
   # Other scopes may use custom stacks.
