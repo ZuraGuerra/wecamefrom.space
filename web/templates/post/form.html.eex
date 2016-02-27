@@ -53,6 +53,8 @@
     <%= error_tag f, :published %>
   </div>
 
+   <%= hidden_input f, :admin_id, value: Plug.Conn.get_session(@conn, :admin) %>
+
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>

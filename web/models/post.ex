@@ -2,6 +2,7 @@ defmodule FromSpace.Post do
   use FromSpace.Web, :model
 
   schema "posts" do
+    belongs_to :admin, FromSpace.Admin
     field :title, :string
     field :url, :string
     field :preview_image, :string
@@ -14,7 +15,7 @@ defmodule FromSpace.Post do
     timestamps
   end
 
-  @required_fields ~w(title url preview_image preview_text preview_background_color preview_font_color html published)
+  @required_fields ~w(title url preview_image preview_text preview_background_color preview_font_color html published admin_id)
   @optional_fields ~w()
 
   @doc """

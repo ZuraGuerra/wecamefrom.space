@@ -2,6 +2,7 @@ defmodule FromSpace.Admin do
   use FromSpace.Web, :model
 
   schema "admins" do
+    has_many :posts, FromSpace.Post
     field :name, :string
     field :password, :string
     field :description, :string
