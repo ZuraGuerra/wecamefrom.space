@@ -2,7 +2,8 @@ defmodule FromSpace.PostController do
   use FromSpace.Web, :controller
 
   alias FromSpace.Post
-
+  
+  plug FromSpace.Plug.Auth
   plug :scrub_params, "post" when action in [:create, :update]
 
   def index(conn, _params) do

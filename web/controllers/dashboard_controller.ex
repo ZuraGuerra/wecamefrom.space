@@ -1,6 +1,8 @@
 defmodule FromSpace.DashboardController do
   use FromSpace.Web, :controller
   alias FromSpace.Post
+  
+  plug FromSpace.Plug.Auth
 
   def editor(conn, %{"post_id" => post_id}) do
     post = Repo.get_by(Post, id: post_id)
