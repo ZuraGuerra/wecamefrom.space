@@ -1,40 +1,21 @@
 <h2>Listing posts</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Preview image</th>
-      <th>Preview text</th>
-      <th>Preview background color</th>
-      <th>Preview font color</th>
-      <th>Html</th>
-      <th>Published</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
 <%= for post <- @posts do %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.url %></td>
-      <td><%= post.preview_image %></td>
-      <td><%= post.preview_text %></td>
-      <td><%= post.preview_background_color %></td>
-      <td><%= post.preview_font_color %></td>
-      <td><%= post.html %></td>
-      <td><%= post.published %></td>
 
-      <td class="text-right">
-        <%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
+    <div style="background-color:<%= post.preview_background_color %>; color:<%= post.preview_font_color %>;">
+      <p><%= post.title %></p>
+      <img src="<%= post.preview_image %>" style="max-height: 300px; max-width: 300px;">
+      <p><%= post.preview_text %></p>
+      <%= if post.published do %>
+      <p><strong>PUBLISHED</strong></p>
+      <%= link "Live", to: "/#{post.url}", class: "btn btn-default btn-xs" %>
+      <% else %>
+      <p><strong>DRAFT</strong></p>
+      <% end %>
+      <%= link "Preview", to: "/admin/preview/#{post.id}", class: "btn btn-default btn-xs" %>
+      <%= link "Edit", to: "/admin/editor/#{post.id}", class: "btn btn-default btn-xs" %>
+      <%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+    </div>
+<br>
+<br>
 <% end %>
-  </tbody>
-</table>
-
-<%= link "New post", to: post_path(@conn, :new) %>

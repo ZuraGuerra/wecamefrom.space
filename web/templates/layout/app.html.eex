@@ -16,11 +16,19 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <%= if AuthService.logged_in?(@conn) do %>
+              <li><a href="/admin/dashboard">DASHBOARD</a></li>
+              <li><a href="/admin/editor">NEW POST</a></li>
+              <li><a href="/admin/logout">LOG OUT</a></li>
+            <% else %>
+              <li><a href="/admin/">ADMIN</a></li>
+            <% end %>
+            <li><a href="/">HOME</a></li>
           </ul>
         </nav>
-        <span class="logo"></span>
       </header>
+      <br>
+      <br>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
