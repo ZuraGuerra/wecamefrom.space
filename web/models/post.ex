@@ -13,7 +13,7 @@ defmodule FromSpace.Post do
     field :preview_font_color, :string
     field :html, :string
     field :published, :boolean, default: false
-    field :tags, :string
+    field :tags, {:array, :string}, default: []
 
     timestamps
   end

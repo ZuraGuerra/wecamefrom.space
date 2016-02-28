@@ -18,6 +18,7 @@ defmodule FromSpace.Router do
 
     get "/", PageController, :index
     get "/:post_url", PostController, :show
+    get "/tag/:tag", PostController, :show_by_tag
   end
 
   scope "/admin", FromSpace do
