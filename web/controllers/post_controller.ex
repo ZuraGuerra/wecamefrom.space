@@ -63,7 +63,7 @@ defmodule FromSpace.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: post_path(conn, :show, post))
+        |> redirect(to: "/admin/dashboard")
       {:error, changeset} ->
         render(conn, "edit.html", post: post, changeset: changeset)
     end

@@ -21,7 +21,7 @@
               <li><a href="/admin/editor">NEW POST</a></li>
               <li><a href="/admin/logout">LOG OUT</a></li>
             <% else %>
-              <li><a href="/admin/">ADMIN</a></li>
+              <li><a href="/admin/login">ADMIN</a></li>
             <% end %>
             <li><a href="/">HOME</a></li>
           </ul>

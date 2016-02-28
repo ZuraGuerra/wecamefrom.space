@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= label f, :preview_image, class: "control-label" %>
-    <%= text_input f, :preview_image, class: "form-control" %>
+    <%= text_input f, :preview_image, class: "form-control", type: "url" %>
     <%= error_tag f, :preview_image %>
   </div>
 
@@ -31,13 +31,13 @@
 
   <div class="form-group">
     <%= label f, :preview_background_color, class: "control-label" %>
-    <%= text_input f, :preview_background_color, class: "form-control" %>
+    <%= text_input f, :preview_background_color, class: "form-control", type: "color" %>
     <%= error_tag f, :preview_background_color %>
   </div>
 
   <div class="form-group">
     <%= label f, :preview_font_color, class: "control-label" %>
-    <%= text_input f, :preview_font_color, class: "form-control" %>
+    <%= text_input f, :preview_font_color, class: "form-control", type: "color" %>
     <%= error_tag f, :preview_font_color %>
   </div>
 
