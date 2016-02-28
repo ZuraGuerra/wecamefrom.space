@@ -25,7 +25,7 @@ defmodule FromSpace.Router do
 
     get "/new", AuthController, :new
     post "/register", AuthController, :register
-    get "/", AuthController, :auth
+    get "/login", AuthController, :auth
     post "/login", AuthController, :login
     get "/logout", AuthController, :logout
 
