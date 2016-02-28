@@ -13,12 +13,13 @@ defmodule FromSpace.Post do
     field :preview_font_color, :string
     field :html, :string
     field :published, :boolean, default: false
+    field :tags, :string
 
     timestamps
   end
 
   @required_fields ~w(title url preview_image preview_text preview_background_color preview_font_color html published admin_id)
-  @optional_fields ~w()
+  @optional_fields ~w(tags)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
