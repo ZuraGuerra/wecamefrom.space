@@ -1,7 +1,7 @@
 defmodule FromSpace.PostController do
   use FromSpace.Web, :controller
   import Ecto.Changeset, only: [put_change: 3]
-
+  alias FromSpace.TagsService
   alias FromSpace.Post
   
   plug FromSpace.Plug.Auth
@@ -65,7 +65,7 @@ defmodule FromSpace.PostController do
   def edit(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
     changeset = Post.changeset(post)
-    render(conn, "edit.html", post: post, changeset: changeset, virtual_tags: tags_to_string(post.tags))
+    render(conn, "edit.html", post: post, changeset: changeset, virtual_tags: TagsService.tags_to_string(post.tags))
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
@@ -92,11 +92,5 @@ defmodule FromSpace.PostController do
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: post_path(conn, :index))
-  end
-
-  defp tags_to_string(tags) do
-    tags
-    |> Enum.intersperse(", ")
-    |> List.to_string
   end
 end
