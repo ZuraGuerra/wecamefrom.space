@@ -76,7 +76,7 @@ defmodule FromSpace.PostController do
         |> put_flash(:info, "Post updated successfully.")
         |> redirect(to: "/admin/dashboard")
       {:error, changeset} ->
-        render(conn, "edit.html", post: post, changeset: changeset)
+        render(conn, "edit.html", post: post, changeset: changeset, virtual_tags: TagsService.tags_to_string(post.tags))
     end
   end
 
