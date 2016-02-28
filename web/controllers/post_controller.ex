@@ -1,5 +1,6 @@
 defmodule FromSpace.PostController do
   use FromSpace.Web, :controller
+  import Ecto.Changeset, only: [put_change: 3]
 
   alias FromSpace.Post
   
@@ -44,6 +45,18 @@ defmodule FromSpace.PostController do
     end
   end
 
+  def show_by_tag(conn, %{"tag" => tag}) do
+    posts = Post.published_with_tag(tag)
+    IO.puts posts
+    cond do
+      posts == [] ->
+        conn
+        |> put_flash(:error, "No posts about #{tag}")
+        |> redirect to: "/"
+      posts -> render(conn, "index.html", posts: posts)
+    end
+  end
+
   def show(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
     render(conn, "show.html", post: post)
@@ -52,7 +65,7 @@ defmodule FromSpace.PostController do
   def edit(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
     changeset = Post.changeset(post)
-    render(conn, "edit.html", post: post, changeset: changeset)
+    render(conn, "edit.html", post: post, changeset: changeset, virtual_tags: tags_to_string(post.tags))
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
@@ -79,5 +92,11 @@ defmodule FromSpace.PostController do
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: post_path(conn, :index))
+  end
+
+  defp tags_to_string(tags) do
+    tags
+    |> Enum.intersperse(", ")
+    |> List.to_string
   end
 end

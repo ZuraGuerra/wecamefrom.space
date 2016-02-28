@@ -12,17 +12,23 @@ defmodule FromSpace.DashboardController do
   def editor(conn, %{"post_id" => post_id}) do
     post = Repo.get_by(Post, id: post_id)
     changeset = Post.changeset(post)
-    render conn, FromSpace.PostView, "edit.html", changeset: changeset, post: post, conn: conn
+    render conn, FromSpace.PostView, "edit.html", changeset: changeset, post: post, conn: conn, virtual_tags: tags_to_string(post.tags)
   end
 
   def editor(conn, _params) do
     changeset = changeset = Post.changeset(%Post{})
-    render conn, FromSpace.PostView, "new.html", changeset: changeset, conn: conn
+    render conn, FromSpace.PostView, "new.html", changeset: changeset, conn: conn, virtual_tags: tags_to_string(changeset.model.tags)
   end
 
   def preview(conn, %{"post_id" => post_id}) do
     post = Repo.get_by(Post, id: post_id)
     changeset = Post.changeset(post)
     render conn, FromSpace.PostView, "preview.html", post: post
+  end
+
+  defp tags_to_string(tags) do
+    tags
+    |> Enum.intersperse(", ")
+    |> List.to_string
   end
 end

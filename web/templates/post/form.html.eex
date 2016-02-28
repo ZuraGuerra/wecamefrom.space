@@ -48,9 +48,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :tags, class: "control-label" %>
-    <%= text_input f, :tags, class: "form-control" %>
-    <%= error_tag f, :tags %>
+    <%= label f, :virtual_tags, class: "control-label" %>
+    <%= text_input f, :virtual_tags, class: "form-control", value: @virtual_tags %>
+    <%= error_tag f, :virtual_tags %>
   </div>
 
   <div class="form-group">

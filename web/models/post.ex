@@ -48,4 +48,13 @@ defmodule FromSpace.Post do
      limit: 20
     Repo.all(posts)
   end
+
+  def published_with_tag(tag) do
+    posts = from p in FromSpace.Post,
+      select: p,
+      where: p.published == true and ^tag in p.tags,
+      order_by: [desc: p.inserted_at],
+      limit: 20
+    Repo.all(posts)
+  end
 end
