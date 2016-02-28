@@ -7,7 +7,7 @@ defmodule FromSpace.PostController do
   plug :scrub_params, "post" when action in [:create, :update]
 
   def index(conn, _params) do
-    posts = Repo.all(Post)
+    posts = Post.all_by_creation
     render(conn, "index.html", posts: posts)
   end
 
@@ -26,6 +26,21 @@ defmodule FromSpace.PostController do
         |> redirect(to: post_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def show(conn, %{"post_url" => post_url}) do
+    post = Repo.get_by(Post, url: post_url)
+    cond do
+      post == nil ->
+        conn
+        |> put_flash(:error, "This post doesn't exist")
+        |> redirect to: "/"
+      post.published == true -> render(conn, "show.html", post: post)
+      :else ->
+        conn
+        |> put_flash(:error, "This post doesn't exist")
+        |> redirect to: "/"
     end
   end
 

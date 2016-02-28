@@ -1,6 +1,8 @@
 defmodule FromSpace.Post do
   use FromSpace.Web, :model
 
+  alias FromSpace.Repo
+
   schema "posts" do
     belongs_to :admin, FromSpace.Admin
     field :title, :string
@@ -27,5 +29,13 @@ defmodule FromSpace.Post do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> unique_constraint(:url, on: FromSpace.Repo, downcase: true)
+  end
+
+  def all_by_creation do
+    posts = from p in FromSpace.Post,
+     select: p,
+     order_by: [desc: p.inserted_at]
+    Repo.all(posts)
   end
 end

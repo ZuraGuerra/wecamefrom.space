@@ -5,7 +5,7 @@ defmodule FromSpace.DashboardController do
   plug FromSpace.Plug.Auth
 
   def dashboard(conn, _params) do
-    posts = Repo.all(Post)
+    posts = Post.all_by_creation
     render conn, "index.html", conn: conn, posts: posts
   end
 
