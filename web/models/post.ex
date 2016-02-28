@@ -38,4 +38,13 @@ defmodule FromSpace.Post do
      order_by: [desc: p.inserted_at]
     Repo.all(posts)
   end
+
+  def published_by_creation do
+    posts = from p in FromSpace.Post,
+     select: p,
+     where: p.published == true,
+     order_by: [desc: p.inserted_at],
+     limit: 20
+    Repo.all(posts)
+  end
 end

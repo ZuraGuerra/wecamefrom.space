@@ -1,20 +1,23 @@
-<h2>Listing posts</h2>
-
 <%= for post <- @posts do %>
 
     <div style="background-color:<%= post.preview_background_color %>; color:<%= post.preview_font_color %>;">
       <p><%= post.title %></p>
       <img src="<%= post.preview_image %>" style="max-height: 300px; max-width: 300px;">
       <p><%= post.preview_text %></p>
-      <%= if post.published do %>
-      <p><strong>PUBLISHED</strong></p>
-      <%= link "Live", to: "/#{post.url}", class: "btn btn-default btn-xs" %>
-      <% else %>
-      <p><strong>DRAFT</strong></p>
-      <% end %>
-      <%= link "Preview", to: "/admin/preview/#{post.id}", class: "btn btn-default btn-xs" %>
+
+      <%= if AuthService.logged_in?(@conn) do %>
+
+        <%= if post.published do %>
+          <p><strong>PUBLISHED</strong></p>
+          <%= link "View", to: "/#{post.url}", class: "btn btn-default btn-xs" %>
+        <% else %>
+          <p><strong>DRAFT</strong></p>
+          <%= link "Preview", to: "/admin/preview/#{post.id}", class: "btn btn-default btn-xs" %>
+        <% end %> 
       <%= link "Edit", to: "/admin/editor/#{post.id}", class: "btn btn-default btn-xs" %>
       <%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+
+     <% end %>
     </div>
 <br>
 <br>

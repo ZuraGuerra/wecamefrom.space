@@ -3,6 +3,7 @@ defmodule FromSpace.PageController do
   alias FromSpace.Post
 
   def index(conn, _params) do
-    render conn, "index.html"
+    posts = Post.published_by_creation
+    render conn, "index.html", posts: posts
   end
 end
