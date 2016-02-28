@@ -18,7 +18,7 @@ defmodule FromSpace.DashboardController do
 
   def editor(conn, _params) do
     changeset = changeset = Post.changeset(%Post{})
-    render conn, FromSpace.PostView, "new.html", changeset: changeset, conn: conn, virtual_tags: Tags.Service.tags_to_string(changeset.model.tags)
+    render conn, FromSpace.PostView, "new.html", changeset: changeset, conn: conn, virtual_tags: TagsService.tags_to_string(changeset.model.tags)
   end
 
   def preview(conn, %{"post_id" => post_id}) do

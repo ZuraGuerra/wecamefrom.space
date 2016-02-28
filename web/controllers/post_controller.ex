@@ -1,6 +1,6 @@
 defmodule FromSpace.PostController do
   use FromSpace.Web, :controller
-  import Ecto.Changeset, only: [put_change: 3]
+  import Ecto.Changeset, only: [put_change: 3, delete_change: 2]
   alias FromSpace.TagsService
   alias FromSpace.Post
   
@@ -18,8 +18,7 @@ defmodule FromSpace.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
-    changeset = Post.changeset(%Post{}, post_params)
-
+    changeset = TagsService.changeset_with_tags(post_params)
     case Repo.insert(changeset) do
       {:ok, _post} ->
         conn
@@ -47,7 +46,6 @@ defmodule FromSpace.PostController do
 
   def show_by_tag(conn, %{"tag" => tag}) do
     posts = Post.published_with_tag(tag)
-    IO.puts posts
     cond do
       posts == [] ->
         conn
@@ -70,7 +68,7 @@ defmodule FromSpace.PostController do
 
   def update(conn, %{"id" => id, "post" => post_params}) do
     post = Repo.get!(Post, id)
-    changeset = Post.changeset(post, post_params)
+    changeset = TagsService.changeset_with_tags(post_params, post)
 
     case Repo.update(changeset) do
       {:ok, post} ->

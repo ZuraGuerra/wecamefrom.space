@@ -14,12 +14,13 @@ defmodule FromSpace.Post do
     field :html, :string
     field :published, :boolean, default: false
     field :tags, {:array, :string}, default: []
+    field :virtual_tags, :string, virtual: true
 
     timestamps
   end
 
   @required_fields ~w(title url preview_image preview_text preview_background_color preview_font_color html published admin_id)
-  @optional_fields ~w(tags)
+  @optional_fields ~w(tags virtual_tags)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

@@ -17,6 +17,8 @@
         <a href="/tag/<%= tag %>"><%= tag %></a>
       <% end %>
 
+      <br>
+
       <%= if AuthService.logged_in?(@conn) do %>
 
         <%= if !post.published do %>
