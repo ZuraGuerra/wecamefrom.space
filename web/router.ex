@@ -9,6 +9,15 @@ defmodule FromSpace.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :admin_browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug FromSpace.Plug.Auth
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -16,19 +25,20 @@ defmodule FromSpace.Router do
   scope "/", FromSpace do
     pipe_through :browser # Use the default browser stack
 
+    get "/admin/login", AuthController, :auth
+    post "/admin/login", AuthController, :login
+    get "/admin/logout", AuthController, :logout
+
     get "/", PageController, :index
     get "/:post_url", PostController, :show
     get "/tag/:tag", PostController, :show_by_tag
   end
 
   scope "/admin", FromSpace do
-    pipe_through :browser
+    pipe_through :admin_browser
 
     get "/new", AuthController, :new
     post "/register", AuthController, :register
-    get "/login", AuthController, :auth
-    post "/login", AuthController, :login
-    get "/logout", AuthController, :logout
 
     resources "/posts", PostController
     get "/editor", DashboardController, :editor

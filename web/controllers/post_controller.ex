@@ -3,8 +3,7 @@ defmodule FromSpace.PostController do
   import Ecto.Changeset, only: [put_change: 3, delete_change: 2]
   alias FromSpace.TagsService
   alias FromSpace.Post
-  
-  plug FromSpace.Plug.Auth
+
   plug :scrub_params, "post" when action in [:create, :update]
 
   def index(conn, _params) do
