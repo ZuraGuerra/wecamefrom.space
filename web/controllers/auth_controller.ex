@@ -39,15 +39,15 @@ defmodule FromSpace.AuthController do
       :no_admin ->
         conn
         |> put_flash(:error, "No admin registered")
-        |> redirect(to: "/admin")
+        |> redirect(to: "/admin/login")
       :password_mismatch ->
         conn
         |> put_flash(:error, "Password mismatch")
-        |> redirect(to: "/admin")
+        |> redirect(to: "/admin/login")
       _ ->
         conn
         |> put_flash(:error, "Please try again")
-        |> redirect(to: "/admin")
+        |> redirect(to: "/admin/login")
     end
   end
 
