@@ -21,7 +21,8 @@
   padding-right:1vw;
 
   margin:auto;
-  margin-top:5vh;
+  margin-top:2.5vh;
+  margin-bottom:2.5vh;
 
   border-style:solid;
   border-width:0.2vw;
@@ -29,4 +30,7 @@
 
 .post img {
   max-width: 10vw;
+  -webkit-clip-path: circle(10vw at center);
+  -moz-clip-path: circle(10vw, 100px, 100px);
+  clip-path: circle(10vw, 100px, 100px);
 }
