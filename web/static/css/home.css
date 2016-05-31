@@ -37,11 +37,12 @@
 }
 
 .post .title {
-  font-family:"league-gothic", Futura, sans-serif;
+  font-family:"ff-enzo-web", Futura, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1em;
   word-spacing: 1em;
-  font-size:1.5em;
+  font-size:1em;
+  font-weight:900;
 
   background-color:#191625;
 
@@ -51,5 +52,9 @@
 
   border-bottom:solid;
   border-bottom-width: 0.2vw;
+}
 
+.post .preview {
+  font-family:"pt-sans", Avenir, Helvetica, Arial, sans-serif;
+  font-size:1.1em;
 }

@@ -15,7 +15,7 @@
     <% end %>
 
     <img src="<%= post.preview_image %>" style="max-height: 300px; max-width: 300px;">
-    <p><%= post.preview_text %></p>
+    <p class="preview"><%= post.preview_text %></p>
     <br>
     <%= for tag <- post.tags do %>
       <a href="/tag/<%= tag %>"><%= tag %></a>
