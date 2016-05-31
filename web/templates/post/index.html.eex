@@ -1,36 +1,38 @@
+<div class="posts-container">
 <%= for post <- @posts do %>
+  <div style="background-color:<%= post.preview_background_color %>;
+                        color:<%= post.preview_font_color %>;"
+       class="post">
 
-    <div style="background-color:<%= post.preview_background_color %>; color:<%= post.preview_font_color %>;">
+    <%= if !post.published do %>
+        <p><%= post.title %></p>
+    <% else %>
+      <a href="/<%= post.url %>">
+        <p><%= post.title %></p>
+      </a>
+    <% end %>
+
+    <img src="<%= post.preview_image %>" style="max-height: 300px; max-width: 300px;">
+    <p><%= post.preview_text %></p>
+    <br>
+    <%= for tag <- post.tags do %>
+      <a href="/tag/<%= tag %>"><%= tag %></a>
+    <% end %>
+
+    <br>
+
+    <%= if AuthService.logged_in?(@conn) do %>
 
       <%= if !post.published do %>
-          <p><%= post.title %></p>
-      <% else %>
-        <a href="/<%= post.url %>">
-          <p><%= post.title %></p>
-        </a>
+        <p><strong>DRAFT</strong></p>
+        <%= link "Preview", to: "/admin/preview/#{post.id}", class: "btn btn-default btn-xs" %>
       <% end %>
 
-      <img src="<%= post.preview_image %>" style="max-height: 300px; max-width: 300px;">
-      <p><%= post.preview_text %></p>
-      <br>
-      <%= for tag <- post.tags do %>
-        <a href="/tag/<%= tag %>"><%= tag %></a>
-      <% end %>
+    <%= link "Edit", to: "/admin/editor/#{post.id}", class: "btn btn-default btn-xs" %>
+    <%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
 
-      <br>
-
-      <%= if AuthService.logged_in?(@conn) do %>
-
-        <%= if !post.published do %>
-          <p><strong>DRAFT</strong></p>
-          <%= link "Preview", to: "/admin/preview/#{post.id}", class: "btn btn-default btn-xs" %>
-        <% end %> 
-
-      <%= link "Edit", to: "/admin/editor/#{post.id}", class: "btn btn-default btn-xs" %>
-      <%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-
-     <% end %>
-    </div>
-<br>
-<br>
+   <% end %>
+  </div>
+  <br><br>
 <% end %>
+</div>

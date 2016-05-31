@@ -1,0 +1,17 @@
+.posts-container {
+  display: flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content: space-around;
+}
+
+.post {
+  border-radius:2vw;
+  padding:5vw;
+  text-align:center;
+  flex: 0 0 30%;
+  max-width: 45vw;
+  max-height: 40vh;
+  margin:auto;
+  overflow: hidden;
+}
