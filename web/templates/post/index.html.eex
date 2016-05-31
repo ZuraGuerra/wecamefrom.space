@@ -1,14 +1,16 @@
 <div class="posts-container">
 <%= for post <- @posts do %>
-  <div style="background-color:<%= post.preview_background_color %>;
+  <div style="border-color:<%= post.preview_background_color %>;
                         color:<%= post.preview_font_color %>;"
        class="post">
 
     <%= if !post.published do %>
-        <p><%= post.title %></p>
+        <p class="title" style="color:<%= post.preview_background_color %>;
+                                background-color:<%= post.preview_font_color %>"><%= post.title %></p>
     <% else %>
       <a href="/<%= post.url %>">
-        <p><%= post.title %></p>
+        <p class="title" style="color:<%= post.preview_background_color %>;
+                                background-color:<%= post.preview_font_color %>"><%= post.title %></p>
       </a>
     <% end %>
 

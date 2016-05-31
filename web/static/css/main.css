@@ -2,3 +2,7 @@ body {
   /* So the background takes the color of custom posts css */
   background-color: inherit;
 }
+
+a:hover {
+  text-decoration:none;
+}
