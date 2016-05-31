@@ -25,6 +25,7 @@ defmodule FromSpace.Router do
   scope "/", FromSpace do
     pipe_through :browser # Use the default browser stack
 
+    #get "/admin/new", AuthController, :new
     get "/admin/login", AuthController, :auth
     post "/admin/login", AuthController, :login
     get "/admin/logout", AuthController, :logout
