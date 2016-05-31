@@ -58,3 +58,10 @@
   font-family:"pt-sans", Avenir, Helvetica, Arial, sans-serif;
   font-size:1.1em;
 }
+
+.post .tag {
+  font-family:Futura, Arial, sans-serif;
+  padding:0.4vw;
+  border-radius:7%;
+  margin:0.2vw;
+}
