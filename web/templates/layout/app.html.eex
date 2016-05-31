@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello FromSpace!</title>
+    <title>👁</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -38,6 +38,8 @@
       </main>
 
     </div> <!-- /container -->
+    <script src="https://use.typekit.net/ixd8yze.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
