@@ -13,8 +13,9 @@
                                 background-color:<%= post.preview_font_color %>"><%= post.title %></p>
       </a>
     <% end %>
-
-    <img src="<%= post.preview_image %>" style="max-height: 300px; max-width: 300px;">
+    <a href="/<%= post.url %>">
+      <img src="<%= post.preview_image %>" style="max-height: 300px; max-width: 300px;">
+    </a>
     <p class="preview"><%= post.preview_text %></p>
     <br>
     <%= for tag <- post.tags do %>
