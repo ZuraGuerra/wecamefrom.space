@@ -1,6 +1,7 @@
 body {
   /* So the background takes the color of custom posts css */
   background-color: inherit;
+  text-rendering: optimizeLegibility;
 }
 
 a:hover {
