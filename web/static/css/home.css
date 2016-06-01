@@ -21,7 +21,7 @@
   min-width:35vw;
   max-height: 60vh;
   min-height:60vh;
-  overflow: hidden;
+  overflow: scroll;
 
   padding-top:3vh;
   padding-bottom:3vh;
