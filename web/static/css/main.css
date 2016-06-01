@@ -4,6 +4,20 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.logo {
+  font-family:Avenir,Futura, sans-serif;
+  text-transform:uppercase;
+  weight:900;
+  font-size:4em;
+  margin:0.2em;
+}
+
 a:hover {
   text-decoration:none;
+  background-color:inherit;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration:none;
+  background-color:inherit;
 }

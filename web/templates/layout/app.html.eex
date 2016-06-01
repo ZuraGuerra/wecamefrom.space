@@ -15,15 +15,15 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
+          <ul class="nav nav-pills pull-left">
+            <li><a href="/" class="logo"><%= random_emoji %></a></li>
+          </ul>
           <ul class="nav nav-pills pull-right">
             <%= if AuthService.logged_in?(@conn) do %>
               <li><a href="/admin/dashboard">DASHBOARD</a></li>
               <li><a href="/admin/editor">NEW POST</a></li>
               <li><a href="/admin/logout">LOG OUT</a></li>
-            <% else %>
-              <li><a href="/admin/login">ADMIN</a></li>
             <% end %>
-            <li><a href="/">HOME</a></li>
           </ul>
         </nav>
       </header>
