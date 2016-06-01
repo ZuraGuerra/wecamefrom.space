@@ -10,6 +10,7 @@
   flex-direction:row;
   flex-wrap:wrap;
   justify-content: center;
+  margin-top:-0.2vh;
 }
 
 .post {
@@ -41,7 +42,6 @@
   -webkit-clip-path: circle(10vw at center);
   -moz-clip-path: circle(10vw, 100px, 100px);
   clip-path: circle(10vw, 100px, 100px);
-  background-color:red;
 }
 
 .post img:hover {
@@ -60,7 +60,7 @@
 
   margin:-1vw;
   margin-top:-1.8vw;
-  margin-bottom:2vw;
+  margin-bottom:0.2vh;
 
   border-bottom:solid;
   border-bottom-width: 0.2vw;
