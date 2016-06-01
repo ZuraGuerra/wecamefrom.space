@@ -5,6 +5,13 @@
   justify-content: space-around;
 }
 
+.tags-container {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
 .post {
   border-radius:0.5vw;
   text-align:center;

@@ -18,12 +18,14 @@
     </a>
     <p class="preview"><%= post.preview_text %></p>
     <br>
-    <%= for tag <- post.tags do %>
-      <a href="/tag/<%= tag %>" class="tag" style="background-color:<%= post.preview_font_color %>;
-                                                   color:<%= post.preview_background_color %>">
-        <%= tag %>
-      </a>
-    <% end %>
+    <div class="tags-container">
+      <%= for tag <- post.tags do %>
+        <a href="/tag/<%= tag %>" class="tag" style="background-color:<%= post.preview_font_color %>;
+                                                     color:<%= post.preview_background_color %>">
+          <%= tag %>
+        </a>
+      <% end %>
+    </div>
 
     <br>
 
