@@ -38,7 +38,8 @@
 }
 
 .post img {
-  max-width: 10vw;
+  max-width: 300px;
+  max-height: 300px;
   -webkit-clip-path: circle(10vw at center);
   -moz-clip-path: circle(10vw, 100px, 100px);
   clip-path: circle(10vw, 100px, 100px);

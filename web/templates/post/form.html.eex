@@ -25,7 +25,7 @@
 
   <div class="form-group">
     <%= label f, :preview_text, class: "control-label" %>
-    <%= text_input f, :preview_text, class: "form-control" %>
+    <%= text_input f, :preview_text, class: "form-control", maxlength: "120" %>
     <%= error_tag f, :preview_text %>
   </div>
 
