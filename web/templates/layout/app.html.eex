@@ -4,10 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>👁</title>
+    <meta name="description" content="Escribo para recordar. Sobre arte, programación,
+    videojuegos y todo lo que me de curiosidad. Se habla español, francés, portugués e inglés.">
+    <meta name="author" content="Zura Guerra">
+    <meta name="keywords" content="Arte interactivo, programación, Elixir, videojuegos, arte visual,
+    diseño, México, grafofilia, aprender">
+    <link rel="author" href="https://plus.google.com/107315646595502179404"/>
+
+    <meta property="og:title" content="<%= random_emoji %> WE CAME FROM SPACE :: Zura Guerra"/>
+    <meta property="og:type" content="blog, website"/>
+    <meta property="og:image" content="https://avatars.io/twitter/grafofilia/large"/>
+    <meta property="og:url" content="http://wecamefrom.space"/>
+    <meta property="og:description" content="Escribo para recordar. Sobre arte, programación,
+    videojuegos y todo lo que me de curiosidad. Se habla español, francés, portugués e inglés."/>
+    <meta property="fb:admins" content="1355706584"/>
+
+    <title><%= random_emoji %> WE CAME FROM SPACE :: Zura Guerra</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
