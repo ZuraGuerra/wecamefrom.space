@@ -13,6 +13,11 @@
   margin-top:-0.2vh;
 }
 
+.social-icons{
+  margin-top:3vh;
+  font-size:2em;
+}
+
 .post {
   border-radius:0.5vw;
   text-align:center;

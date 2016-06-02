@@ -21,6 +21,8 @@
     <meta property="fb:admins" content="1355706584"/>
 
     <title><%= random_emoji %> WE CAME FROM SPACE :: Zura Guerra</title>
+
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" >
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -30,6 +32,15 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-left">
             <li><a href="/" class="logo"><%= random_emoji %></a></li>
+            <li><a href="https://twitter.com/grafofilia" target="_blank" class="social-icons">
+                  <i class="icon ion-social-twitter"></i>
+            </a></li>
+            <li><a href="https://github.com/ZuraGuerra" target="_blank" class="social-icons">
+                  <i class="icon ion-social-github"></i>
+            </a></li>
+            <li><a href="http://steamcommunity.com/id/grafofilia" target="_blank" class="social-icons">
+                  <i class="icon ion-steam"></i>
+            </a></li>
           </ul>
           <ul class="nav nav-pills pull-right">
             <%= if AuthService.logged_in?(@conn) do %>
